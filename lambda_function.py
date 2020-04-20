@@ -30,7 +30,7 @@ def lambda_handler(event, context):
     print(gogo["title"])
 
 
-    slack = Slack(url="https://hooks.slack.com/services/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")
+    slack = Slack(url="testing.com")
     slack.post(text=gogo["title"]+" "+str(gogo["id"])+" "+ "this is great!")
 
     return "Completed"

@@ -11,8 +11,6 @@ def http_client(url):
     url = get_url.netloc
     path = get_url.path
     query = get_url.query
-#     print(url)
-#     print(path)
     conn = http.client.HTTPSConnection(url)
     conn.request("GET", path)
     response = conn.getresponse()
@@ -33,5 +31,5 @@ gogo = http_client("https://jsonplaceholder.typicode.com/todos/1")
 print(gogo["title"])
 
 
-slack = Slack(url="https://hooks.slack.com/services/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")
+slack = Slack(url="testing.com")
 slack.post(text=gogo["title"]+" "+str(gogo["id"])+" "+ "this is great!")
