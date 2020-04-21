@@ -1,7 +1,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-def email_client(sender, to_add, body, message, charset):
+def email_client(sender, to_add, message):
     email = boto3.client('ses',region_name="eu-west-2")
     try:
         email_response = email.send_email(
@@ -11,20 +11,13 @@ def email_client(sender, to_add, body, message, charset):
                                      ],
                                  },
                                  Message={
-                                     'Body': {
-                                         'Html': {
-                                             'Charset': charset,
-                                             'Data': body,
-                                         },
-                                         'Text': {
-                                             'Charset': charset,
-                                             'Data': message,
-                                         },
-                                     },
-                                     'Subject': {
-                                         'Charset': charset,
-                                         'Data': "BL-STATS",
-                                     },
+                                         'Subject' : { 'Data': "daily Stats"},
+                                         'Body': {
+                                             'Text': {'Data': message},
+
+                                         }
+
+
                                  },
                                  Source=sender,
                                  # If you are not using a configuration set, comment or delete the
